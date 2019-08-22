@@ -1,17 +1,20 @@
 {
-  "full_name": "Broad User",
+  "add_pypi_badge": "y",
+  "add_pyup_badge": "n",
   "email": "nobody@broadinstitute.org",
+  "full_name": "Broad User",
   "github_username": "githubuser",
+  "open_source_license": ["BSD"],
   "project_name": "Package Name",
-  "project_slug": "python-{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_repo": "python-{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Python Package contains all the boilerplate you need to create a Python package.",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "pypi_username": "{{ cookiecutter.github_username }}",
-  "version": "0.0.1",
-  "use_codecov": "y",
-  "use_circleci": "y",
   "use_circleci_to_jenkins": "n",
+  "use_circleci": "y",
+  "use_codecov": "y",
+  "use_green": "y",
   "use_pytest": "n",
   "use_travisci": "n",
-  "add_pyup_badge": "n",
-  "open_source_license": ["BSD-3"]
+  "version": "0.0.1"
 }

@@ -3,6 +3,7 @@ version: 2.1
 
 orbs:
   python: 'broadinstitute/bits-python@0.2.0'
+{% if cookiecutter.use_circleci_to_jenkins == 'y' -%}
 
 jobs:
   jenkins_deploy:
@@ -13,6 +14,7 @@ jobs:
       - run:
           name: 'Jenkins deploy'
           command: 'bash ~/repo/.circleci/deploy.sh'
+{%- endif %}
 
 workflows:
   preflight:
