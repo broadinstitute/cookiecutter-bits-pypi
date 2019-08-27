@@ -64,7 +64,7 @@ git push --tags
 
 # Credits
 
-This package was created with Cookiecutter_ and the `broadinstitute/cookiecutter-bits-pypi`_ project template.
+This package was created with [Cookiecutter][3] and the `broadinstitute/cookiecutter-bits-pypi` project template.
 
 * [Cookiecutter][3]
 * [https://github.com/broadinstitute/cookiecutter-bits-pypi](broadinstitute/cookiecutter-bits-pypi)
