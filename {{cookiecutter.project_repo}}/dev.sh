@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE='python_dev'
+DOCKER_IMAGE='{{ cookiecutter.project_slug }}:dev'
 SUDO=
 
 SCRIPT_DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -17,7 +17,7 @@ fi
 
 pushd "$SCRIPT_DIR" >/dev/null || exit 1
 
-if ! $SUDO docker image ls | grep -q "$DOCKER_IMAGE"; then
+if ! $SUDO docker image ls | awk '{print $1":"$2}' | grep -q "^$DOCKER_IMAGE"; then
     $SUDO docker build -t "$DOCKER_IMAGE" .
 fi
 

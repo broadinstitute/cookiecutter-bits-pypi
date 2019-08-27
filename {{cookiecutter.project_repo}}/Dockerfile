@@ -1,13 +1,13 @@
-FROM python:3.6-alpine
+FROM python:3.7-alpine
 
 COPY Pipfile* /usr/src/
 
 RUN apk update \
-    && apk add bash gcc git musl-dev \
+    && apk add bash curl gcc git libffi-dev libssl1.1 libxml2-dev libxslt-dev make musl-dev openssh-client openssl-dev
     && pip install pipenv==2018.11.26 --upgrade \
     && cd /usr/src \
-    && pipenv install --dev --system \
-    && echo "alias test='green -r -vvv'" > /root/.bash_profile \
+    && pipenv lock \
+    && pipenv sync --dev \
     && rm -rf /tmp/* \
     && rm -rf /var/cache/apk/* \
     && rm -rf /var/tmp/*

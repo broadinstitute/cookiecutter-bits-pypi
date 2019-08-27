@@ -2,15 +2,16 @@
 language: python
 python:
   - '2.7'
-  - '3.4'
   - '3.5'
   - '3.6'
+  - '3.7'
 cache: pip
 sudo: false
 before_install:
   - pip install pipenv --upgrade
 install:
-  - pipenv install --dev
+  - pipenv lock
+  - pipenv sync --dev
 script: pipenv run green -r -vvv
 branches:
   only:

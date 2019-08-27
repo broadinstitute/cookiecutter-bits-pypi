@@ -1,30 +1,26 @@
 {% set is_open_source = cookiecutter.open_source_license != 'Not open source' -%}
-{% for _ in cookiecutter.project_name %}# {{ cookiecutter.project_name }}{% endfor %}
+# {{ cookiecutter.project_repo }}
 
 {{ cookiecutter.project_short_description }}
 
-{% if cookiecutter.is_open_source %}
-.. image:: https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}.svg
-        :target: https://pypi.python.org/pypi/{{ cookiecutter.project_slug }}
+{% if is_open_source -%}
+{% if cookiecutter.add_pypi_badge == 'y' %}[![image](https://img.shields.io/pypi/pyversions/{{ cookiecutter.project_slug }}.svg)](https://pypi.org/project/{{ cookiecutter.project_slug }}/)
+{% endif -%}
 
-{% if cookiecutter.use_circleci %}
-[![CircleCI](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_slug }}/tree/master.svg?style=svg)](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_slug }}/tree/master)
-{%- endif %}
+{% if cookiecutter.use_circleci == 'y' %}[![CircleCI](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_repo }}/tree/master.svg?style=svg)](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_repo }}/tree/master)
+{% endif -%}
 
-{% if cookiecutter.use_travisci %}
-.. image:: https://img.shields.io/travis/broadinstitute/{{ cookiecutter.project_slug }}.svg
-        :target: https://travis-ci.org/broadinstitute/{{ cookiecutter.project_slug }}
-{%- endif %}
+{% if cookiecutter.use_travisci == 'y' %}[![Build Status](https://travis-ci.org/broadinstitute/{{ cookiecutter.project_repo }}.svg?branch=master)](https://travis-ci.org/broadinstitute/{{ cookiecutter.project_repo }})
+{% endif -%}
 
-{% if cookiecutter.use_codecov %}
-[![codecov](https://codecov.io/gh/broadinstitute/{{ cookiecutter.project_slug }}/branch/master/graph/badge.svg)](https://codecov.io/gh/broadinstitute/{{ cookiecutter.project_slug }})
-{%- endif %}
-{%- endif %}
+{% if cookiecutter.use_codecov == 'y' %}[![codecov](https://codecov.io/gh/broadinstitute/{{ cookiecutter.project_repo }}/branch/master/graph/badge.svg)](https://codecov.io/gh/broadinstitute/{{ cookiecutter.project_repo }})
+{% endif -%}
 
-{% if cookiecutter.add_pyup_badge == 'y' %}
-[![pyup](https://pyup.io/repos/github/broadinstitute/{{ cookiecutter.project_slug }}/shield.svg)](https://pyup.io/repos/github/broadinstitute/{{ cookiecutter.project_slug }})
-{% endif %}
+{% endif -%}
 
+{% if cookiecutter.add_pyup_badge == 'y' %}[![pyup](https://pyup.io/repos/github/broadinstitute/{{ cookiecutter.project_repo }}/shield.svg)](https://pyup.io/repos/github/broadinstitute/{{ cookiecutter.project_repo }})
+{%- endif -%}
+{# purely here to fix newline nonsense #}
 ## Basics
 
 Basic information about the package
