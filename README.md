@@ -1,4 +1,4 @@
-# cookiecutter-python-package
+# cookiecutter-bits-pypi
 
 This is a collection of standard files that are typically needed for most [Python][1]-related repositories.  Not all files in this repository may be needed for **every** [Python][1] project, but it's a good collection of common tools and configurations to which you can refer.
 
@@ -61,6 +61,16 @@ PIPENV_VENV_IN_PROJECT=1 pipenv install --dev
 ```
 
 The `PIPENV_VENV_IN_PROJECT=1` environment variable setting makes sure that the virtual environment is stored in the local project directory instead of a different temporary directory [pipenv][5] typically uses.
+
+## BITS-specific repos
+
+For BITS repos (named **bits-_reponame_**), be careful when answering the questions asked by cookiecutter.  For example, suppose we are making a new project to automate the **widget** service:
+
+* **project_repo**: Make sure this is set to **bits-widget**
+* **project_slug**: Make sure this is set to just **widget**
+* **pypi_repo**: Make sure this is set to **bits-widget**
+
+This has to do with the templates used to generate the repository.  They all require these values set in this manner for all the parts to line up correctly.
 
 [1]: https://www.python.org/ "Python"
 [2]: https://pre-commit.com/ "pre-commit"

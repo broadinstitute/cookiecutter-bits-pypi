@@ -4,7 +4,7 @@
 {{ cookiecutter.project_short_description }}
 
 {% if is_open_source -%}
-{% if cookiecutter.add_pypi_badge == 'y' %}[![image](https://img.shields.io/pypi/pyversions/{{ cookiecutter.project_slug }}.svg)](https://pypi.org/project/{{ cookiecutter.project_slug }}/)
+{% if cookiecutter.add_pypi_badge == 'y' %}[![image](https://img.shields.io/pypi/pyversions/{{ cookiecutter.pypi_repo }}.svg)](https://pypi.org/project/{{ cookiecutter.pypi_repo }}/)
 {% endif -%}
 
 {% if cookiecutter.use_circleci == 'y' %}[![CircleCI](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_repo }}/tree/master.svg?style=svg)](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_repo }}/tree/master)

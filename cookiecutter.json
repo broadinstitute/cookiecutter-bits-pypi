@@ -1,6 +1,7 @@
 {
   "add_pypi_badge": "y",
   "add_pyup_badge": "n",
+  "bits_pypi_repo": "n",
   "email": "nobody@broadinstitute.org",
   "full_name": "Broad User",
   "github_username": "githubuser",
@@ -9,6 +10,7 @@
   "project_repo": "python-{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Python Package contains all the boilerplate you need to create a Python package.",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "pypi_repo": "{{ cookiecutter.project_slug.lower().replace('_', '-') }}",
   "pypi_username": "{{ cookiecutter.github_username }}",
   "use_circleci_to_jenkins": "n",
   "use_circleci": "y",

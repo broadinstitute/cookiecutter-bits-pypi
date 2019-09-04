@@ -36,5 +36,12 @@ if __name__ == "__main__":
     if "{{ cookiecutter.use_travisci }}" != "y":
         remove_file(".travis.yml")
 
+    if "{{ cookiecutter.bits_pypi_repo }}" != "y":
+        remove_file("test.py")
+        remove_file("bits/__init__.py")
+        remove_file("bits/{{ cookiecutter.project_slug }}/__init__.py")
+        remove_directory("bits/{{ cookiecutter.project_slug }}")
+        remove_directory("bits")
+
     if "Not open source" == "{{ cookiecutter.open_source_license }}":
         remove_file("LICENSE")
