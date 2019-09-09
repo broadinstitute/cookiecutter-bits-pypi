@@ -8,6 +8,7 @@
   "open_source_license": ["BSD"],
   "project_name": "Package Name",
   "project_repo": "python-{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_dest": "{{cookiecutter.project_repo}}",
   "project_short_description": "Python Package contains all the boilerplate you need to create a Python package.",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "pypi_repo": "{{ cookiecutter.project_slug.lower().replace('_', '-') }}",

@@ -3,9 +3,10 @@
 """Install cert_manager."""
 
 import io
+{% if cookiecutter.use_circleci == 'y' or cookiecutter.use_travisci == 'y' -%}
 import os
 import sys
-
+{% endif %}
 from setuptools import find_packages
 from setuptools import setup
 from setuptools.command.install import install
@@ -24,17 +25,32 @@ def get_long_description():
 
 
 # This was a great idea!! https://github.com/levlaz/circleci.py/blob/master/setup.py
+{% if cookiecutter.use_circleci == 'y' or cookiecutter.use_travisci == 'y' -%}
 class VerifyVersionCommand(install):
     """Verify that the git tag matches our version."""
     description = "verify that the git tag matches our version"
 
     def run(self):
         """Check the environment variable representing the tag name against the recorded version."""
-{% if cookiecutter.use_circleci == 'y' %}        tag = os.getenv("CIRCLE_TAG"){%- endif %}
-{% if cookiecutter.use_travisci == 'y' %}        tag = os.getenv("TRAVIS_TAG"){%- endif %}
+{%- if cookiecutter.use_circleci == 'y' %}
+        tag = os.getenv("CIRCLE_TAG")
+{%- endif %}
+{%- if cookiecutter.use_travisci == 'y' %}
+        tag = os.getenv("TRAVIS_TAG")
+{%- endif %}
         if tag != VERSION:
             info = "Git tag: {0} does not match the version of this app: {1}".format(tag, VERSION)
             sys.exit(info)
+{% else -%}
+class VerifyVersionCommand(install):
+    """Verify that the git tag matches our version."""
+    description = "verify that the git tag matches our version"
+
+    def run(self):
+        """There are no checks, so just return."""
+        return
+{% endif -%}
+# end of function (for templating)
 
 
 setup(
