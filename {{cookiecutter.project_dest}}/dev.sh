@@ -18,7 +18,7 @@ fi
 pushd "$SCRIPT_DIR" >/dev/null || exit 1
 
 if ! $SUDO docker image ls | awk '{print $1":"$2}' | grep -q "^$DOCKER_IMAGE"; then
-    $SUDO docker build -t "$DOCKER_IMAGE" .
+    $SUDO docker build --pull -t "$DOCKER_IMAGE" .
 fi
 
 $SUDO docker run $TTY --rm -v "$SCRIPT_DIR":/usr/src "$DOCKER_IMAGE" "$@"
