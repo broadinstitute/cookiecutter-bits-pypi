@@ -1,3 +1,4 @@
+---
 git_remote_type: scaraplate.gitremotes.GitHub
 
 cookiecutter_context_type: scaraplate.cookiecutter.ScaraplateConf
@@ -5,11 +6,28 @@ cookiecutter_context_type: scaraplate.cookiecutter.ScaraplateConf
 default_strategy: scaraplate.strategies.Overwrite
 strategies_mapping:
   .bumpversion.cfg: scaraplate.strategies.IfMissing
-  .dockerignore: scaraplate.strategies.IfMissing
+  .circleci/config.yml: scaraplate.strategies.IfMissing
+  .dockerignore: scaraplate.strategies.SortedUniqueLines
   .github/CODEOWNERS: scaraplate.strategies.IfMissing
-  .gitignore: scaraplate.strategies.IfMissing
+  .gitignore: scaraplate.strategies.SortedUniqueLines
+#   .vscode/settings.json: scaraplate.strategies.IfMissing
+  .yamllint: scaraplate.strategies.IfMissing
+  Dockerfile: scaraplate.strategies.IfMissing
   Pipfile: scaraplate.strategies.IfMissing
+  pylama.ini:
+    strategy: scaraplate.strategies.ConfigParserMerge
+    config:
+      preserve_sections:
+        - sections: ^pylama
+      preserve_keys:
+      - sections: ^pylama$
+        keys: ^linters$
+      - sections: ^pylama:codestyle$
+        keys: ^max_line_length
+      - sections: ^pylama:pylint$
+        keys: ^max_line_length
   README.md: scaraplate.strategies.IfMissing
+#   setup.cfg: scaraplate.strategies.SetupCfgMerge
 #   mypy.ini:
 #     strategy: scaraplate.strategies.ConfigParserMerge
 #     config:
@@ -39,7 +57,6 @@ strategies_mapping:
 #       line_comment_start: '#'
 #       max_line_length: 87
 #       max_line_linter_ignore_mark: '  # noqa'
-  .vscode/settings.json: scaraplate.strategies.IfMissing
 
   src/*/__init__.py: scaraplate.strategies.IfMissing
   tests/__init__.py: scaraplate.strategies.IfMissing
