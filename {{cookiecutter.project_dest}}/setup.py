@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Install cert_manager."""
+"""Install {{ cookiecutter.project_slug }}."""
 
 import io
 {% if cookiecutter.use_circleci == 'y' or cookiecutter.use_travisci == 'y' -%}

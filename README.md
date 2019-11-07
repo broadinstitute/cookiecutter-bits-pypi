@@ -2,6 +2,58 @@
 
 This is a collection of standard files that are typically needed for most [Python][1]-related repositories.  Not all files in this repository may be needed for **every** [Python][1] project, but it's a good collection of common tools and configurations to which you can refer.
 
+## New repository
+
+To create a new repository using this template, the first thing you will need is the **cookiecutter** [Python][1] module, which you can install with `pip`:
+
+```sh
+pip install cookiecutter
+```
+
+Once you have that, you create the new repository with a command such as:
+
+```sh
+cookiecutter -o . https://github.com/broadinstitute/cookiecutter-bits-pypi.git
+```
+
+This command will create a new repository in the current directory using this template.  You will then need to answer all questions asked by **cookiecutter**, which will create a directory with your new repository setup.  You can then `cd` to this directory and run `git init` to make it a git repository.
+
+## Updating a repository created by this template
+
+A separate [Python][1] module (**scaraplate**) is used to update a repository that was created with a previous revision of this template.  This module can be installed with `pip`:
+
+```sh
+pip install scaraplate
+```
+
+**scaraplate** also requires the template to be cloned to a local directory:
+
+```sh
+cd /tmp
+git clone git clone https://github.com/broadinstitute/cookiecutter-bits-pypi.git
+```
+
+Now, you can `cd` into your repository directory (assumed here to be `python-package_name`) and use `scaraplate` to update your repository to the latest configuration:
+
+```sh
+scaraplate rollup /tmp/cookiecutter-bits-pypi python-package_name
+```
+
+You will have to confirm the answers (by just hitting Enter) from the original `cookiecutter` creation of this repository.  This should update all the templated files that come from this repository and leave all the other files in your current repository alone.
+
+## Updating a repository to use this template
+
+This process is a bit more involved than just using the template given that `cookiecutter` will overwrite a directory completely if you point it at a pre-existing repository.  Therefore, the best method is to:
+
+* Run `cookiecutter` to create a new repository with the same name and settings that would match the repository you want to convert.
+* Go to your original repository and create a new branch.
+* Copy any non-conflicting files from the original repository to this new repository.
+* Copy the `.git` directory from the original repository to this new templated repository.
+
+When you do a `git diff` now, you should just see the new files that `cookiecutter` added.  You should then commit these changes to the new branch to save the changes `cookiecutter` has made.
+
+To test that future updates using `scaraplate` won't overwrite any inappropriate files, you should then use the `scaraplate` procedure to update this new branch and make sure no changes were made, since the template should presumably be up to date.
+
 ## Files
 
 This is a just brief overview of the files.
