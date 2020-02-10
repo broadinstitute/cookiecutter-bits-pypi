@@ -4,9 +4,24 @@
 
 import logging
 import os
+from pathlib import Path
 
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 LOGGER = logging.getLogger(__name__)
+
+
+def create_directory(dirpath):
+    """Create a directory from the project directory."""
+    path = os.path.join(PROJECT_DIRECTORY, dirpath)
+    LOGGER.debug("Creating directory %s", path)
+    os.mkdir(path)
+
+
+def create_blank_file(dirpath):
+    """Create a directory from the project directory."""
+    path = os.path.join(PROJECT_DIRECTORY, dirpath)
+    LOGGER.debug("Creating blank file %s", path)
+    Path(path).touch()
 
 
 def remove_file(filepath):
@@ -30,6 +45,9 @@ if __name__ == "__main__":
         remove_file(".circleci/deploy.sh")
         remove_directory(".circleci")
 
+    if "{{ cookiecutter.use_circleci_to_jenkins }}" != "y":
+        remove_file(".circleci/deploy.sh")
+
     if "{{ cookiecutter.use_green }}" != "y":
         remove_file(".green")
 
@@ -42,6 +60,8 @@ if __name__ == "__main__":
         remove_file("bits/{{ cookiecutter.project_slug }}/__init__.py")
         remove_directory("bits/{{ cookiecutter.project_slug }}")
         remove_directory("bits")
+        create_directory("{{ cookiecutter.project_slug }}")
+        create_blank_file("{{ cookiecutter.project_slug }}/__init__.py")
 
     if "Not open source" == "{{ cookiecutter.open_source_license }}":
         remove_file("LICENSE")
