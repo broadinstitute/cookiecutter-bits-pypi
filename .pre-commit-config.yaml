@@ -1,10 +1,11 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.4.0
+    rev: v3.2.0
     hooks:
       - id: check-added-large-files
       - id: check-ast
+        exclude: '{{cookiecutter.project_dest}}/*'
       - id: check-case-conflict
       - id: check-docstring-first
       - id: check-executables-have-shebangs
@@ -12,6 +13,7 @@ repos:
       - id: check-merge-conflict
       - id: check-symlinks
       - id: debug-statements
+        exclude: '{{cookiecutter.project_dest}}/*'
       - id: detect-aws-credentials
         args:
           - --allow-missing-credentials
@@ -26,9 +28,11 @@ repos:
     rev: v1.0.1
     hooks:
       - id: pylama
+        exclude: '{{cookiecutter.project_dest}}/*'
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.18.0
+    rev: v1.24.2
     hooks:
       - id: yamllint
         args:
           - -s
+        exclude: '{{cookiecutter.project_dest}}/*'

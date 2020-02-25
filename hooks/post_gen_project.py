@@ -27,15 +27,17 @@ def create_blank_file(dirpath):
 def remove_file(filepath):
     """Remove a file from the project directory."""
     path = os.path.join(PROJECT_DIRECTORY, filepath)
-    LOGGER.debug("Removing file %s", path)
-    os.remove(path)
+    if os.path.isfile(path):
+        LOGGER.debug("Removing file %s", path)
+        os.remove(path)
 
 
 def remove_directory(dirpath):
     """Remove a directory from the project directory."""
     path = os.path.join(PROJECT_DIRECTORY, dirpath)
-    LOGGER.debug("Removing directory %s", path)
-    os.rmdir(path)
+    if os.path.isdir(path):
+        LOGGER.debug("Removing directory %s", path)
+        os.rmdir(path)
 
 
 if __name__ == "__main__":
@@ -65,3 +67,12 @@ if __name__ == "__main__":
 
     if "Not open source" == "{{ cookiecutter.open_source_license }}":
         remove_file("LICENSE")
+
+    if "{{ cookiecutter.use_pipenv }}" != "y":
+        remove_file("Pipfile")
+
+    if "{{ cookiecutter.use_poetry }}" != "y":
+        remove_file("pyproject.toml")
+    else:
+        remove_file("setup.cfg")
+        remove_file("setup.py")

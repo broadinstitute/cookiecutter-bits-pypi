@@ -30,10 +30,10 @@ pip install scaraplate
 
 ```sh
 cd /tmp
-git clone git clone https://github.com/broadinstitute/cookiecutter-bits-pypi.git
+git clone https://github.com/broadinstitute/cookiecutter-bits-pypi.git
 ```
 
-Now, you can `cd` into your repository directory (assumed here to be `python-package_name`) and use `scaraplate` to update your repository to the latest configuration:
+Now, you can `cd` into the directory where your repository directory lives (i.e. not the actual repository itself).  The directory is assumed to be `python-package_name` in this example.  Use `scaraplate` to update your repository to the latest configuration:
 
 ```sh
 scaraplate rollup /tmp/cookiecutter-bits-pypi python-package_name
@@ -83,6 +83,10 @@ This is a sample [TravisCI][4] configuration file that can be used to run [Travi
 
 This is the BITS standard configuration file for the [yamllint][7] YAML linting application.
 
+### dev.sh
+
+This is a simple script that starts up or builds a development environment in [Docker][9].  The way it works is it looks for an image by the name specified at the top of the script.  If that image doesn't exist, it uses the `Dockerfile` in the local directory to build the image.  You are then dropped into a bash shell inside that container under the `/usr/src` path.  The present working directory outside the container is volume mapped to `/usr/src` inside the container as well.
+
 ### Dockerfile
 
 This is a sample `Dockerfile` that can be used to create a [Python][1] container for use as a development environment for whatever Python][1] configuration you wish to use.  By default, it uses [Python][1] 3.6 and [pipenv][5] to install packages.
@@ -91,28 +95,17 @@ This is a sample `Dockerfile` that can be used to create a [Python][1] container
 
 The default license approved for use at the Broad Institute (BSD 3-Clause "New" or "Revised" License).
 
-### Pipfile
+### Pipfile (deprecated)
 
-The file used by [pipenv][5] to install PyPi packages.  This is a default list and is meant as a base configuration for your project.  Obviously, more packages will probably be needed depending on the project.
-
-### dev.sh
-
-This is a simple script that starts up or builds a development environment in [Docker][9].  The way it works is it looks for an image by the name specified at the top of the script.  If that image doesn't exist, it uses the `Dockerfile` in the local directory to build the image.  You are then dropped into a bash shell inside that container under the `/usr/src` path.  The present working directory outside the container is volume mapped to `/usr/src` inside the container as well.
+The file used by [pipenv][5] to install PyPi packages.  This file will be removed in a later release as [Poetry][11] is now the default dependency manager.
 
 ### pylama.ini
 
 This is the BITS standard configuration file for the [pylama][8] [Python][1] linting application.
 
-## VS Code
+### pyproject.toml
 
-If you use workspaces in [VS Code][10], you can clone this repository in the base directory of your workspace.  You can then use [pipenv][5] to install the packages listed in the `Pipfile`.  You will need to make sure [pipenv][5] installs into a `.venv` directory under the workspace directory.  To do this, you can run [pipenv][5] as follows:
-
-```sh
-PIPENV_VENV_IN_PROJECT=1 pipenv lock
-PIPENV_VENV_IN_PROJECT=1 pipenv install --dev
-```
-
-The `PIPENV_VENV_IN_PROJECT=1` environment variable setting makes sure that the virtual environment is stored in the local project directory instead of a different temporary directory [pipenv][5] typically uses.
+The file used by [Poetry][11] to install PyPi packages.  [Poetry][11] is now the default dependency manager used in place of [pipenv][5].  There is a default list of packages included in this file to start.  Obviously, more packages will probably be needed depending on the project.
 
 ## BITS-specific repos
 
@@ -134,3 +127,4 @@ This has to do with the templates used to generate the repository.  They all req
 [8]: https://github.com/klen/pylama "pylama"
 [9]: https://www.docker.com/ "Docker"
 [10]: https://code.visualstudio.com/ "VS Code"
+[11]: https://python-poetry.org/ "Poetry"
