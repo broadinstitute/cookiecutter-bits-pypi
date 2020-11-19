@@ -29,5 +29,6 @@ strategies_mapping:
   pyproject.toml: scaraplate.strategies.IfMissing
   README.md: scaraplate.strategies.IfMissing
 
+  .github/workflows/*.yaml: scaraplate.strategies.IfMissing
   src/*/__init__.py: scaraplate.strategies.IfMissing
   tests/__init__.py: scaraplate.strategies.IfMissing

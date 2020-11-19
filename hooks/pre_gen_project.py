@@ -17,7 +17,9 @@ if not re.match(MODULE_REGEX, MODULE_NAME):
     # Exit to cancel project
     sys.exit(1)
 
-ci_check = ["{{ cookiecutter.use_travisci }}", "{{ cookiecutter.use_circleci }}"]
+ci_check = [
+    "{{ cookiecutter.use_actions }}", "{{ cookiecutter.use_circleci }}", "{{ cookiecutter.use_travisci }}"
+]
 if ci_check.count("y") > 1:
     print("ERROR: You cannot use multiple CI systems.  Pick one.")
 
