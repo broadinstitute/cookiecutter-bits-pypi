@@ -5,7 +5,7 @@
   "email": "nobody@broadinstitute.org",
   "full_name": "Broad User",
   "github_username": "githubuser",
-  "open_source_license": ["BSD"],
+  "open_source_license": ["BSD-3-Clause"],
   "project_name": "Package Name",
   "project_repo": "python-{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_dest": "{{cookiecutter.project_repo}}",
@@ -17,6 +17,8 @@
   "use_circleci": "y",
   "use_codecov": "y",
   "use_green": "y",
+  "use_pipenv": "n",
+  "use_poetry": "y",
   "use_pytest": "n",
   "use_travisci": "n",
   "version": "0.0.1"

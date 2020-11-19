@@ -8,7 +8,7 @@ import sys
 
 MODULE_REGEX = r"^[_a-zA-Z][_a-zA-Z0-9]+$"
 
-MODULE_NAME = "{{ cookiecutter.project_slug}}"
+MODULE_NAME = "{{ cookiecutter.project_slug }}"
 
 if not re.match(MODULE_REGEX, MODULE_NAME):
     print("ERROR: The project slug (%s) is not a valid Python module name." % MODULE_NAME)
@@ -17,14 +17,23 @@ if not re.match(MODULE_REGEX, MODULE_NAME):
     # Exit to cancel project
     sys.exit(1)
 
-if ("{{ cookiecutter.use_travisci}}" == "y") and ("{{ cookiecutter.use_circleci}}" == "y"):
-    print("ERROR: You cannot build on both CircleCI and TravisCI.  Pick one.")
+ci_check = ["{{ cookiecutter.use_travisci }}", "{{ cookiecutter.use_circleci }}"]
+if ci_check.count("y") > 1:
+    print("ERROR: You cannot use multiple CI systems.  Pick one.")
 
     # Exit to cancel project
     sys.exit(2)
 
-if ("{{ cookiecutter.use_pytest}}" == "y") and ("{{ cookiecutter.use_green}}" == "y"):
-    print("ERROR: You cannot test with both pytest and green.  Pick one.")
+dep_check = ["{{ cookiecutter.use_pipenv }}", "{{ cookiecutter.use_poetry }}"]
+if dep_check.count("y") > 1:
+    print("ERROR: You cannot use multiple dependency managers.  Pick one.")
+
+    # Exit to cancel project
+    sys.exit(2)
+
+test_check = ["{{ cookiecutter.use_pytest }}", "{{ cookiecutter.use_green }}"]
+if test_check.count("y") > 1:
+    print("ERROR: You cannot use multiple unit test frameworks.  Pick one.")
 
     # Exit to cancel project
     sys.exit(2)
