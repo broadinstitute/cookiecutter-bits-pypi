@@ -15,7 +15,7 @@ install:
 script: pipenv run green -r -vvv
 branches:
   only:
-    - master
+    - main
 jobs:
   include:
     - stage: preflight

@@ -13,6 +13,7 @@
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "pypi_repo": "{{ cookiecutter.project_slug.lower().replace('_', '-') }}",
   "pypi_username": "{{ cookiecutter.github_username }}",
+  "use_actions": "n",
   "use_circleci_to_jenkins": "n",
   "use_circleci": "y",
   "use_codecov": "y",

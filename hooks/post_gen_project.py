@@ -42,6 +42,12 @@ def remove_directory(dirpath):
 
 if __name__ == "__main__":
 
+    if "{{ cookiecutter.use_actions }}" != "y":
+        remove_file(".github/workflows/checks.yaml")
+        remove_file(".github/workflows/deploy.yaml")
+        remove_file(".github/workflows/test_deploy.yaml")
+        remove_directory(".github/workflows")
+
     if "{{ cookiecutter.use_circleci }}" != "y":
         remove_file(".circleci/config.yml")
         remove_file(".circleci/deploy.sh")
