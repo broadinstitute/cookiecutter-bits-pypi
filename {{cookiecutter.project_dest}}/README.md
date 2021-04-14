@@ -7,13 +7,13 @@
 {% if cookiecutter.add_pypi_badge == 'y' %}[![image](https://img.shields.io/pypi/pyversions/{{ cookiecutter.pypi_repo }}.svg)](https://pypi.org/project/{{ cookiecutter.pypi_repo }}/)
 {% endif -%}
 
-{% if cookiecutter.use_circleci == 'y' %}[![CircleCI](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_repo }}/tree/master.svg?style=svg)](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_repo }}/tree/master)
+{% if cookiecutter.use_circleci == 'y' %}[![CircleCI](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_repo }}/tree/main.svg?style=svg)](https://circleci.com/gh/broadinstitute/{{ cookiecutter.project_repo }}/tree/main)
 {% endif -%}
 
-{% if cookiecutter.use_travisci == 'y' %}[![Build Status](https://travis-ci.org/broadinstitute/{{ cookiecutter.project_repo }}.svg?branch=master)](https://travis-ci.org/broadinstitute/{{ cookiecutter.project_repo }})
+{% if cookiecutter.use_travisci == 'y' %}[![Build Status](https://travis-ci.org/broadinstitute/{{ cookiecutter.project_repo }}.svg?branch=main)](https://travis-ci.org/broadinstitute/{{ cookiecutter.project_repo }})
 {% endif -%}
 
-{% if cookiecutter.use_codecov == 'y' %}[![codecov](https://codecov.io/gh/broadinstitute/{{ cookiecutter.project_repo }}/branch/master/graph/badge.svg)](https://codecov.io/gh/broadinstitute/{{ cookiecutter.project_repo }})
+{% if cookiecutter.use_codecov == 'y' %}[![codecov](https://codecov.io/gh/broadinstitute/{{ cookiecutter.project_repo }}/branch/main/graph/badge.svg)](https://codecov.io/gh/broadinstitute/{{ cookiecutter.project_repo }})
 {% endif -%}
 
 {% endif -%}
@@ -53,10 +53,10 @@ Releases to the codebase are typically done using the [bump2version][2] tool.  T
 bump2version --verbose --no-tag patch
 ```
 
-Once the PR is merged, you can then checkout the new master branch and tag it using the new version number that is now in `.bumpversion.cfg`:
+Once the PR is merged, you can then checkout the new main branch and tag it using the new version number that is now in `.bumpversion.cfg`:
 
 ```sh
-git checkout master
+git checkout main
 git pull --rebase
 git tag 1.0.0 -m 'Bump version: 0.1.0 → 1.0.0'
 git push --tags
