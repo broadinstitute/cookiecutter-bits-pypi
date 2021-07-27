@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: 'Checkout repo'
-        uses: 'actions/checkout@v2'
+        uses: 'actions/checkout@v2.3.4'
 
       - name: 'Git setup'
         run: |
@@ -20,7 +20,7 @@ jobs:
           git checkout ${{ github.head_ref }}
 
       - name: 'Set up Python'
-        uses: 'actions/setup-python@v1'
+        uses: 'actions/setup-python@v2.2.2'
         with:
           python-version: 3.8
 
@@ -37,7 +37,7 @@ jobs:
           echo "::set-output name=dir::$(pip cache dir)"
 
       - name: 'Cache pip'
-        uses: 'actions/cache@v1'
+        uses: 'actions/cache@v2.1.6'
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: ${{ runner.os }}-v1-pip-${{ steps.pyver.outputs.version }}
@@ -48,7 +48,7 @@ jobs:
         run: 'pip install pre-commit'
 
       - name: 'Cache pre-commit'
-        uses: 'actions/cache@v1'
+        uses: 'actions/cache@v2.1.6'
         with:
           path: ' ~/.cache/pre-commit'
           key: ${{ runner.os }}-v1-pre-commit-${{ steps.pyver.outputs.version }}-${{ hashFiles('.pre-commit-config.yaml') }}
