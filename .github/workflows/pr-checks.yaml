@@ -37,7 +37,7 @@ jobs:
           echo "::set-output name=dir::$(pip cache dir)"
 
       - name: 'Cache pip'
-        uses: 'actions/cache@v2.1.7'
+        uses: 'actions/cache@v3'
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: ${{ runner.os }}-v1-pip-${{ steps.pyver.outputs.version }}
@@ -48,7 +48,7 @@ jobs:
         run: 'pip install pre-commit'
 
       - name: 'Cache pre-commit'
-        uses: 'actions/cache@v2.1.7'
+        uses: 'actions/cache@v3'
         with:
           path: ' ~/.cache/pre-commit'
           key: ${{ runner.os }}-v1-pre-commit-${{ steps.pyver.outputs.version }}-${{ hashFiles('.pre-commit-config.yaml') }}
