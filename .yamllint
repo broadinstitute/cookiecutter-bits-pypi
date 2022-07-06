@@ -4,4 +4,7 @@ rules:
   line-length:
     max: 140
     level: warning
-  indentation: {spaces: 2}
+  indentation:
+    spaces: 2
+ignore: |
+  .venv/
