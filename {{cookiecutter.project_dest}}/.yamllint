@@ -1,10 +1,10 @@
 ---
 extends: default
-rules:
-  line-length:
-    max: 140
-    level: warning
-  indentation:
-    spaces: 2
 ignore: |
   .venv/
+rules:
+  indentation:
+    spaces: 2
+  line-length:
+    level: warning
+    max: 140
