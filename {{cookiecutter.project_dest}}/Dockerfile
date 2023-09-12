@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 {% if cookiecutter.use_pipenv == 'y' %}COPY Pipfile* /usr/src/
 {% endif -%}
