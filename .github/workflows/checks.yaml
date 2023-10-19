@@ -1,5 +1,5 @@
 ---
-name: 'pr-checks'
+name: 'checks'
 
 'on':
   pull_request:
@@ -18,14 +18,6 @@ jobs:
           git fetch --no-tags --prune origin +refs/heads/*:refs/remotes/origin/*
           git checkout ${{ github.base_ref }}
           git checkout ${{ github.head_ref }}
-
-      - name: 'Set up Python 3.11'
-        uses: 'actions/setup-python@v4'
-        with:
-          python-version: '3.11'
-
-      - name: 'Install pre-commit'
-        run: 'pip install pre-commit'
 
       - name: 'Run pre-commit'
         uses: 'pre-commit/action@v3.0.0'

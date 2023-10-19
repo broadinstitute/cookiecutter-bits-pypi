@@ -16,11 +16,13 @@
   "use_actions": "y",
   "use_circleci_to_jenkins": "n",
   "use_circleci": "n",
-  "use_codecov": "y",
+  "use_codecov": "n",
   "use_green": "y",
   "use_pipenv": "n",
   "use_poetry": "y",
+  "use_pylama": "y",
   "use_pytest": "n",
+  "use_ruff": "n",
   "use_travisci": "n",
   "version": "0.0.1"
 }

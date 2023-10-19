@@ -18,14 +18,22 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
         exclude: '.bumpversion.cfg'
-      - id: fix-encoding-pragma
       - id: mixed-line-ending
       - id: name-tests-test
       - id: trailing-whitespace
+{% if cookiecutter.use_pylama== 'y' -%}
   - repo: https://github.com/broadinstitute/mirrors-pylama
     rev: v1.0.2
     hooks:
       - id: pylama
+{% endif -%}
+{% if cookiecutter.use_ruff== 'y' -%}
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.0
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+{% endif -%}
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.32.0
     hooks:
