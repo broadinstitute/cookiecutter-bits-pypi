@@ -1,0 +1,14 @@
+fixable = ["ALL"]
+line-length = 120
+select = [
+  "D",   # pydocstyle
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "I",   # isort
+  "N",   # pep8-naming
+  "PL",  # Pylint
+  "UP",  # pyupgrade
+]
+
+[pydocstyle]
+convention = "google"

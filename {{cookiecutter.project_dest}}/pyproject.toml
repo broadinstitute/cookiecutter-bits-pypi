@@ -32,6 +32,23 @@ pylint = "*"
 pyyaml = "*"
 testtools = "*"
 twine = "*"
-unittest2 = ">=1.1.0"
 wheel = "*"
 yamllint = "*"
+
+{% if cookiecutter.use_ruff== 'y' -%}
+[tool.ruff]
+fixable = ["ALL"]
+line-length = 120
+select = [
+  "D",   # pydocstyle
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "I",   # isort
+  "N",   # pep8-naming
+  "PL",  # Pylint
+  "UP",  # pyupgrade
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+{% endif -%}
