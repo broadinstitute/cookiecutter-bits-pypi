@@ -66,10 +66,6 @@ This is a sample `.gitignore` that just ignores all files.  This is primarily he
 
 This is a config for [pre-commit][2], which is a library to control pre-commit hooks for Git.  These are just the standard ones BITS uses in [Python][1] repositories.
 
-### .pylintrc
-
-This is the BITS standard configuration file for the [pylint][3] [Python][1] linting application.
-
 ### .travis.yml
 
 This is a sample [TravisCI][4] configuration file that can be used to run [TravisCI][4] jobs for commits to your repository for unit tests, linting, etc.  It currently supports:

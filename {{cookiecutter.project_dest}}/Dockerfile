@@ -17,7 +17,7 @@ RUN apt-get update \
     {% if cookiecutter.use_pipenv == 'y' %}&& pipenv lock \
     && pipenv sync --dev \
     {% endif -%}
-    {% if cookiecutter.use_poetry == 'y' %}&& poetry install \
+    {% if cookiecutter.use_poetry == 'y' %}&& poetry install --no-root \
     {% endif -%}
     && rm -rf /tmp/* \
     && rm -rf /var/cache/apt/* \
