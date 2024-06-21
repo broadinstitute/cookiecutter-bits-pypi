@@ -1,14 +1,14 @@
 FROM python:3.11-slim
 
-{% if cookiecutter.use_pipenv == 'y' %}COPY Pipfile* /usr/src/
+{% if cookiecutter.use_pipenv == 'y' %}COPY Pipfile* /working/
 {% endif -%}
-{% if cookiecutter.use_poetry == 'y' %}COPY poetry.lock pyproject.toml README.md /usr/src/
+{% if cookiecutter.use_poetry == 'y' %}COPY poetry.lock pyproject.toml README.md /working/
 {% endif -%}
 
 RUN apt-get update \
     && apt-get upgrade -yq \
     && apt-get install -yq curl g++ gcc git \
-    && cd /usr/src \
+    && cd /working \
     {% if cookiecutter.use_pipenv == 'y' %}&& pip install https://github.com/pypa/pipenv/archive/master.zip \
     {% endif -%}
     {% if cookiecutter.use_poetry == 'y' %}&& pip install pip poetry --upgrade \
@@ -23,7 +23,7 @@ RUN apt-get update \
     && rm -rf /var/cache/apt/* \
     && rm -rf /var/tmp/*
 
-WORKDIR /usr/src
+WORKDIR /working
 
 {% if cookiecutter.use_pipenv == 'y' %}ENTRYPOINT ["pipenv", "run"]
 {% endif -%}

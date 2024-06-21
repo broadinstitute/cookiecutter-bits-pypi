@@ -81,7 +81,7 @@ This is the BITS standard configuration file for the [yamllint][7] YAML linting 
 
 ### dev.sh
 
-This is a simple script that starts up or builds a development environment in [Docker][9].  The way it works is it looks for an image by the name specified at the top of the script.  If that image doesn't exist, it uses the `Dockerfile` in the local directory to build the image.  You are then dropped into a bash shell inside that container under the `/usr/src` path.  The present working directory outside the container is volume mapped to `/usr/src` inside the container as well.
+This is a simple script that starts up or builds a development environment in [Docker][9].  The way it works is it looks for an image by the name specified at the top of the script.  If that image doesn't exist, it uses the `Dockerfile` in the local directory to build the image.  You are then dropped into a bash shell inside that container under the `/working` path.  The present working directory outside the container is volume mapped to `/working` inside the container as well.
 
 ### Dockerfile
 
