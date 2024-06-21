@@ -7,19 +7,4 @@ name: 'checks'
 
 jobs:
   pre-commit:
-    runs-on: 'ubuntu-latest'
-
-    steps:
-      - name: 'Checkout repo'
-        uses: 'actions/checkout@v4'
-
-      - name: 'Git setup'
-        run: |
-          git fetch --no-tags --prune origin +refs/heads/*:refs/remotes/origin/*
-          git checkout ${{ github.base_ref }}
-          git checkout ${{ github.head_ref }}
-
-      - name: 'Run pre-commit'
-        uses: 'pre-commit/action@v3.0.1'
-        with:
-          extra_args: '--from-ref ${{ github.base_ref }} --to-ref ${{ github.head_ref }}'
+    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v2.1.1

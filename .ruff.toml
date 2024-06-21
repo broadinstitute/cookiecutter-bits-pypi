@@ -1,5 +1,8 @@
-fixable = ["ALL"]
 line-length = 120
+
+[lint]
+fixable = ["ALL"]
+pydocstyle.convention = "google"
 select = [
   "D",   # pydocstyle
   "E",   # pycodestyle
@@ -9,6 +12,3 @@ select = [
   "PL",  # Pylint
   "UP",  # pyupgrade
 ]
-
-[pydocstyle]
-convention = "google"
