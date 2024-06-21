@@ -14,31 +14,31 @@ homepage = "https://github.com/broadinstitute/{{ cookiecutter.project_repo }}"
 keywords = []
 
 [tool.poetry.dependencies]
-python = "^3.7"  # Compatible python versions must be declared here
+python = "^3.9 <3.12"  # Compatible python versions must be declared here
 
-configparser = ">=3.5.0"
-requests = "*"
-toml = "^0.10"
+configparser = "^7.0.0"
+requests = "^2.32.3"
+toml = "^0.10.2"
 
-[tool.poetry.dev-dependencies]
-bump2version = "*"
-coverage = ">=4.4.2"
-fixtures = "*"
-green = ">=2.12.0"
-mock = ">=2.0.0"
-pydocstyle = "*"
-pylama = "*"
-pylint = "*"
-pyyaml = "*"
-testtools = "*"
-twine = "*"
-wheel = "*"
-yamllint = "*"
+[tool.poetry.group.dev.dependencies]
+bump2version = "^1.0.1"
+coverage = "^7.5.3"
+green = "^4.0.2"
+mock = "^5.1.0"
+pyyaml = "^6.0.1"
+testtools = "^2.7.2"
 
 {% if cookiecutter.use_ruff== 'y' -%}
 [tool.ruff]
-fixable = ["ALL"]
 line-length = 120
+
+[tool.ruff.format]
+# Prefer double quotes over single quotes.
+quote-style = "double"
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+ignore = ["D104"]
 select = [
   "D",   # pydocstyle
   "E",   # pycodestyle
@@ -49,6 +49,6 @@ select = [
   "UP",  # pyupgrade
 ]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 {% endif -%}
