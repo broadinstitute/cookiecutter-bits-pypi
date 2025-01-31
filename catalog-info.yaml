@@ -1,0 +1,16 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cookiecutter-bits-pypi
+  description: Cookiecutter template for a BITS repo for a Python package
+  tags:
+    - python
+  annotations:
+    github.com/project-slug: broadinstitute/cookiecutter-bits-pypi
+    backstage.io/source-template: template:default/open-pr-with-catalog-entry
+spec:
+  type: library
+  lifecycle: production
+  owner: devnull
+  domain: orchestration
