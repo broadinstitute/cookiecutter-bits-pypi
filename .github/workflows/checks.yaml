@@ -7,4 +7,4 @@ name: 'checks'
 
 jobs:
   pre-commit:
-    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v3.0.0
+    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v3.1.1
