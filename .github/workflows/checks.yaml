@@ -1,10 +1,12 @@
 ---
 name: 'checks'
-
+permissions:
+  contents: read
+  pull-requests: read
 'on':
   pull_request:
     branches: ['*']
 
 jobs:
   pre-commit:
-    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v3.2.0
+    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v4.0.0
