@@ -1,6 +1,8 @@
 ---
 name: 'test_deploy'
-
+permissions:
+  contents: read
+  pull-requests: read
 'on':
   push:
     branches:
@@ -8,6 +10,6 @@ name: 'test_deploy'
 
 jobs:
   pypi_test_deploy:
-    uses: broadinstitute/shared-workflows/.github/workflows/python-test-deploy-to-pypi.yaml@v3.2.0
+    uses: broadinstitute/shared-workflows/.github/workflows/python-test-deploy-to-pypi.yaml@v4.0.0
     secrets:
       pypi_test_token: {% raw %}${{ secrets.PYPI_TEST_TOKEN }}{% endraw %}

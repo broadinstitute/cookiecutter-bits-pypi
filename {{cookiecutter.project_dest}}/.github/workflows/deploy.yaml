@@ -1,6 +1,8 @@
 ---
 name: 'deploy'
-
+permissions:
+  contents: read
+  pull-requests: read
 'on':
   push:
     tags:
@@ -8,6 +10,6 @@ name: 'deploy'
 
 jobs:
   pypi_deploy:
-    uses: broadinstitute/shared-workflows/.github/workflows/python-deploy-to-pypi.yaml@v3.2.0
+    uses: broadinstitute/shared-workflows/.github/workflows/python-deploy-to-pypi.yaml@v4.0.0
     secrets:
       pypi_token: {% raw %}${{ secrets.PYPI_TOKEN }}{% endraw %}
