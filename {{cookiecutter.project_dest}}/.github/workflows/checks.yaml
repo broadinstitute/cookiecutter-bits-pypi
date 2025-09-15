@@ -10,15 +10,15 @@ permissions:
 
 jobs:
   pre-commit:
-    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v4.0.0
+    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v5.0.1
   linting:
-    uses: broadinstitute/shared-workflows/.github/workflows/python-lint.yaml@v4.0.0
+    uses: broadinstitute/shared-workflows/.github/workflows/python-lint.yaml@v5.0.1
 {% if cookiecutter.use_ruff== 'y' %}
     with:
       use_pylama: false
       use_ruff: true
 {% endif %}
   unit-tests:
-    uses: broadinstitute/shared-workflows/.github/workflows/python-unit-test.yaml@v4.0.0
+    uses: broadinstitute/shared-workflows/.github/workflows/python-unit-test.yaml@v5.0.1
     with:
       python_package_name: {{cookiecutter.project_slug}}
