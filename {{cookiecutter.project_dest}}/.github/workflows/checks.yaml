@@ -1,24 +1,24 @@
 ---
-name: 'checks'
+name: checks
 permissions:
   contents: read
   pull-requests: read
-'on':
+"on":
   pull_request:
     branches:
-      - 'main'
+      - main
 
 jobs:
   pre-commit:
-    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v5.0.1
+    uses: broadinstitute/shared-workflows/.github/workflows/pre-commit.yaml@v6.0.0
   linting:
-    uses: broadinstitute/shared-workflows/.github/workflows/python-lint.yaml@v5.0.1
+    uses: broadinstitute/shared-workflows/.github/workflows/python-lint.yaml@v6.0.0
 {% if cookiecutter.use_ruff== 'y' %}
     with:
       use_pylama: false
       use_ruff: true
 {% endif %}
   unit-tests:
-    uses: broadinstitute/shared-workflows/.github/workflows/python-unit-test.yaml@v5.0.1
+    uses: broadinstitute/shared-workflows/.github/workflows/python-unit-test.yaml@v6.0.0
     with:
       python_package_name: {{cookiecutter.project_slug}}
