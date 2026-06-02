@@ -13,6 +13,7 @@ strategies_mapping:
   # .vscode/settings.json: scaraplate.strategies.IfMissing
   .yamllint: scaraplate.strategies.IfMissing
   Dockerfile: scaraplate.strategies.IfMissing
+  docs/README.md: scaraplate.strategies.IfMissing
   Pipfile: scaraplate.strategies.IfMissing
   pylama.ini:
     strategy: scaraplate.strategies.ConfigParserMerge
@@ -27,7 +28,6 @@ strategies_mapping:
         - sections: ^pylama:pylint$
           keys: ^max_line_length
   pyproject.toml: scaraplate.strategies.IfMissing
-  README.md: scaraplate.strategies.IfMissing
 
   .github/workflows/*.yaml: scaraplate.strategies.IfMissing
   src/*/__init__.py: scaraplate.strategies.IfMissing
