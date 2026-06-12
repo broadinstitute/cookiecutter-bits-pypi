@@ -1,0 +1,22 @@
+exclude = ["\\{\\{cookiecutter.project_dest\\}\\}"]
+line-length = 120
+
+[format]
+# Prefer double quotes over single quotes.
+quote-style = "double"
+
+[lint]
+fixable = ["ALL"]
+ignore = ["D102", "D104", "N802"]
+select = [
+  "D",   # pydocstyle
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "I",   # isort
+  "N",   # pep8-naming
+  "PL",  # Pylint
+  "UP",  # pyupgrade
+]
+
+[lint.pydocstyle]
+convention = "google"

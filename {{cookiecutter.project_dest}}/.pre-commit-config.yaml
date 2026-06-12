@@ -17,8 +17,9 @@ repos:
           - --allow-missing-credentials
       - id: detect-private-key
       - id: end-of-file-fixer
-        exclude: '.bumpversion.cfg'
+        exclude: .gitignore
       - id: mixed-line-ending
+        exclude: .gitignore
       - id: name-tests-test
       - id: trailing-whitespace
 {% if cookiecutter.use_pylama== 'y' -%}
@@ -29,7 +30,7 @@ repos:
 {% endif -%}
 {% if cookiecutter.use_ruff== 'y' -%}
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.2
+    rev: v0.15.17
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
